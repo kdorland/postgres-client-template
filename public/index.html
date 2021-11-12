@@ -3,19 +3,23 @@
 
 <head>
   <meta charset="UTF-8">
-  <script src="scripts/d3.v6.min.js"></script>
-  <title>Postgres Template</title>
+  <script src="scripts/d3.js"></script>
+  <title>Postgres node.js template med d3.js</title>
 </head>
 
 <body>
-  <h1>Postgres Template</h1>
+  <h1>Postgres node.js template med d3.js</h1>
 
   <script>
+  // Denne query kører op imod API'en som findes i 'main.js'.
+  // Denne HTML skal derfor åbnes igennem serveren for at virke.
   d3.json("/postgresql/query", {
     method: "POST", 
-    body: `SELECT 'Hello, World' as message` // Bare en test-query
+    // Bare en SQL-query som returnerer "Hello, World"
+    // Skriv din egen SQL her som fetcher det relevante data fra postgres
+    body: `SELECT 'Hello, World' as message` 
   }).then(function(response) {
-    const data = response.data;
+    const data = response.data; // Hent data ud af response
     console.log("data", data);
 
     const w = 500;
@@ -34,7 +38,9 @@
       .append("text")
       .attr("x", 20)
       .attr("y", 20)
-      .text(function (d) { return d.message; })  
+      .text(function (d) { return "Svar fra databasen: " + d.message; }) 
+      
+    // Lav din egen visualsering med data her!
   });
   
   </script>
