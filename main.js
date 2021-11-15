@@ -58,10 +58,8 @@ app.use(express.static("public"))
 
 /*
  * Her defineres API'en.
- * Jeg har været doven og har blot lavet et "endpoint" som bruges til at sende 
- * SQL ned i databasen. Det er en usikker løsning der åbner op for "sql injections".
- * I praksis bør man nok sikre at brugeren i DB_USER kun har "read only" adgang på 
- * databasen, og kun til relevante tabeller.
+ * Man laver lige så mange endpoints man har lyst til. Jeg har lavet et enkelt til
+ * querien `SELECT 'Hello, World' as message`.
  */
 app.post("/postgresql/helloWorldQuery", async (req, res) => {
   try {
