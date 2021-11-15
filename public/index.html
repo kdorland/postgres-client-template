@@ -13,11 +13,8 @@
   <script>
   // Denne query kører op imod API'en som findes i 'main.js'.
   // Denne HTML skal derfor åbnes igennem serveren for at virke.
-  d3.json("/postgresql/query", {
+  d3.json("/postgresql/helloWorldQuery", {
     method: "POST", 
-    // Bare en SQL-query som returnerer "Hello, World"
-    // Skriv din egen SQL her som fetcher det relevante data fra postgres
-    body: `SELECT 'Hello, World' as message` 
   }).then(function(response) {
     const data = response.data; // Hent data ud af response
     console.log("data", data);

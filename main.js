@@ -11,7 +11,7 @@ const express = require("express");
  * DB_PORT er porten til databasen. Det plejer at være 5432, så den behøver man nok ikke ændre.
  */
 const PORT = process.env.PORT || 8080;
-const DB_USER = process.env.DB_USER || "postgres";
+const DB_USER = process.env.DB_USER || "kdorland";
 const DB_HOST = process.env.DB_HOST || "localhost";
 const DB_NAME = process.env.DB_NAME || "kristians-database";
 const DB_PW = process.env.DB_PW || "password";
@@ -63,10 +63,11 @@ app.use(express.static("public"))
  * I praksis bør man nok sikre at brugeren i DB_USER kun har "read only" adgang på 
  * databasen, og kun til relevante tabeller.
  */
-app.post("/postgresql/query", async (req, res) => {
+app.post("/postgresql/helloWorldQuery", async (req, res) => {
   try {
     // Lav query
-    queryData = await client.query(req.body);
+    const query = `SELECT 'Hello, World' as message`;
+    queryData = await client.query(query);
     // Giv svar tilbage til JavaScript
     res.json({
       "ok": true,
