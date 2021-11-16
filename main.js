@@ -1,5 +1,6 @@
 const { Client } = require("pg");
 const express = require("express");
+const morgan = require("morgan"); // Some nice logging
 
 /**
  * Følgende parametre bruges til at forbinde til databasen.
@@ -55,6 +56,7 @@ client.connect();
 
 app.use(express.text());
 app.use(express.static("public"))
+app.use(morgan("combined")); 
 
 /*
  * Her defineres API'en.
