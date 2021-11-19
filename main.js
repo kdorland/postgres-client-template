@@ -63,7 +63,7 @@ app.use(morgan("combined"));
  * Man laver lige så mange endpoints man har lyst til. Jeg har lavet et enkelt til
  * querien `SELECT 'Hello, World' as message`.
  */
-app.post("/postgresql/helloWorldQuery", async (req, res) => {
+app.post("/api/helloQuery", async (req, res) => {
   try {
     // Lav query
     const query = `SELECT 'Hello, World' as message`;
