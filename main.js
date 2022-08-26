@@ -83,5 +83,9 @@ app.post("/api/helloQuery", async (req, res) => {
   }
 });
 
+app.get("/api/hello", async (req, res) => {
+  res.json({ "message": "Hello, World!" });
+})
+
 // Web-serveren startes.
 app.listen(PORT, () => console.log(`Serveren kører på http://localhost:${PORT}`));
